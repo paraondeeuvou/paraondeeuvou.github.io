@@ -9,11 +9,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* ===== Animações ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes flutuar {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* ===== Estilos gerais ===== */
         body {
             background-color: #d9d9d9;
             margin: 0;
             font-family: 'Arial', sans-serif;
             overflow-x: hidden;
+            animation: fadeIn 1s ease-in;
         }
 
         header {
@@ -24,6 +49,15 @@
             font-size: 20px;
             letter-spacing: 2px;
             font-weight: bold;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .header {
+            font-family: 'Amatic SC', cursive;
+            font-size: 42px;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: center;
         }
 
         .container {
@@ -39,19 +73,10 @@
         .logo {
             width: 350px;
             max-width: 90%;
-            animation: flutuar 2s ease-in-out infinite alternate;
+            animation: fadeIn 1.5s ease-in, flutuar 2s ease-in-out infinite alternate;
         }
 
-        @keyframes flutuar {
-            0% {
-                transform: translateY(0);
-            }
-
-            100% {
-                transform: translateY(-5px);
-            }
-        }
-
+        /* ===== Grid de episódios ===== */
         .episodios-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -60,62 +85,73 @@
             max-width: 1100px;
             position: relative;
             margin-top: -9%;
+            animation: fadeIn 1.5s ease-in;
         }
 
         .frame {
             width: 100%;
             max-width: 280px;
-            transition: transform 0.2s;
+            transition: transform 0.3s ease, opacity 0.5s ease;
             cursor: pointer;
-        }
-
-        .frame:hover {
-            transform: scale(1.05);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
         }
 
         .frame:nth-child(1) {
             justify-self: start;
             margin-left: 20px;
+            animation-delay: 0.3s;
         }
 
         .frame:nth-child(2) {
             justify-self: end;
             margin-right: 20px;
+            animation-delay: 0.5s;
         }
 
         .frame:nth-child(3) {
             justify-self: center;
             margin-left: 70px;
             margin-top: -10px;
+            animation-delay: 0.7s;
         }
 
         .frame:nth-child(4) {
             justify-self: center;
             margin-right: 70px;
             margin-top: -10px;
+            animation-delay: 0.9s;
+        }
+
+        .frame:hover {
+            transform: scale(1.05);
         }
 
         .frame img {
             width: 100%;
             display: block;
+            border-radius: 6px;
         }
 
+        /* ===== Responsividade ===== */
         @media (max-width: 768px) {
             .episodios-grid {
                 grid-template-columns: 1fr;
                 gap: 25px;
                 max-width: 280px;
+                margin-top: 0;
             }
 
             .frame {
                 max-width: 100%;
                 justify-self: center !important;
                 margin: 0 !important;
+                animation-delay: 0s;
             }
 
             .logo {
                 width: 180px;
-                animation: none;
+                animation: fadeIn 1.5s ease-in;
             }
 
             header {
@@ -131,7 +167,7 @@
 </head>
 
 <body>
-    <header>EPISÓDIOS</header>
+    <header class="header">EPISÓDIOS</header>
 
     <div class="container">
         <!-- Logo -->
@@ -139,10 +175,14 @@
 
         <!-- Quadros de episódios -->
         <div class="episodios-grid">
-            <a href="#" class="frame"><img src="imgs/1.png" alt="Episódio 1"></a>
-            <a href="#" class="frame"><img src="imgs/1.png" alt="Episódio 2"></a>
-            <a href="#" class="frame"><img src="imgs/1.png" alt="Episódio 3"></a>
-            <a href="#" class="frame"><img src="imgs/1.png" alt="Episódio 4"></a>
+            <a href="https://www.youtube.com/watch?v=cKRXaHjqpaI" class="frame"><img src="imgs/1.png"
+                    alt="Episódio 1"></a>
+            <a href="https://www.youtube.com/watch?v=cKRXaHjqpaI" class="frame"><img src="imgs/1.png"
+                    alt="Episódio 2"></a>
+            <a href="https://www.youtube.com/watch?v=cKRXaHjqpaI" class="frame"><img src="imgs/1.png"
+                    alt="Episódio 3"></a>
+            <a href="https://www.youtube.com/watch?v=cKRXaHjqpaI" class="frame"><img src="imgs/1.png"
+                    alt="Episódio 4"></a>
         </div>
     </div>
 </body>
