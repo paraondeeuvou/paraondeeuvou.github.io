@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pra Onde Eu Vou?</title>
+    <style>
+        body {
+            background-color: #d9d9d9;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .frame {
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        /* Só o logo flutua */
+        .principal {
+            animation: flutuar 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes flutuar {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(4px, -5px) rotate(0.8deg);
+            }
+
+            50% {
+                transform: translate(-3px, 3px) rotate(-0.6deg);
+            }
+
+            75% {
+                transform: translate(5px, 2px) rotate(0.5deg);
+            }
+
+            100% {
+                transform: translate(-4px, -3px) rotate(-0.8deg);
+            }
+        }
+
+        .frame:hover {
+            transform: scale(1.05);
+            z-index: 2;
+        }
+
+        .principal {
+            top: 30%;
+            left: 33%;
+            right: 36%;
+            transform: translate(-50%, -50%);
+        }
+
+
+        @media (max-width: 1600px) {
+            .principal {
+                top: 30%;
+                left: 35%;
+                right: 30%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        @media (max-width: 1366px) {
+            .principal {
+                top: 30%;
+                left: 35%;
+                right: 30%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+
+
+        /* Posições fixas dos outros quadros — baseadas na imagem */
+        .extras {
+            top: 8%;
+            left: 10%;
+            right: 90%;
+            width: 300px;
+        }
+
+        .equipe {
+            bottom: 6%;
+            left: 10%;
+            right: 90%;
+            width: 270px;
+        }
+
+        .episodios {
+            bottom: 6%;
+            right: 25%;
+            left: 75%;
+            width: 300px;
+        }
+
+        .blablabla {
+            top: 8%;
+            right: 25%;
+            left: 75%;
+            width: 270px;
+        }
+
+        .frame img {
+            width: 100%;
+            display: block;
+        }
+
+
+        /* --- MODO MOBILE / TELA ESTREITA --- */
+        @media (max-aspect-ratio: 4/3),
+        (max-width: 768px) {
+
+            body {
+                overflow-y: auto;
+                /* ativa o scroll no mobile */
+            }
+
+            .container {
+                position: static;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 20px;
+                height: auto;
+                padding: 40px 0;
+            }
+
+            .frame {
+                position: static;
+                transform: none !important;
+                width: 70%;
+                max-width: 280px;
+                margin: 10px auto;
+            }
+
+            .principal {
+                order: -1;
+                /* vem primeiro no mobile */
+                width: 90%;
+                max-width: 400px;
+                animation: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="#principal" class="frame principal"><img src="imgs/3.png" alt="Pra Onde Eu Vou?"></a>
+        <a href="#extras" class="frame extras"><img src="imgs/1.png" alt="Extras"></a>
+        <a href="#equipe" class="frame equipe"><img src="imgs/2.png" alt="Equipe"></a>
+        <a href="#episodios" class="frame episodios"><img src="imgs/1.png" alt="Episódios"></a>
+        <a href="#blablabla" class="frame blablabla"><img src="imgs/2.png" alt="Blá Blá Blá"></a>
+    </div>
+</body>
+
+</html>

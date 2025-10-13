@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipe - Pra Onde Eu Vou?</title>
+    <style>
+        body {
+            background-color: #d9d9d9;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Header roxo superior */
+        header {
+            background-color: #7c6bdb;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 20px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        /* Container principal */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 30px;
+            padding: 30px 20px 20px 20px;
+            position: relative;
+        }
+
+        /* Logo principal */
+        .logo {
+            width: 350px;
+            max-width: 90%;
+            animation: flutuar 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes flutuar {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Imagem da equipe */
+        .equipe-img {
+            width: 100%;
+            max-width: 700px;
+            margin-top: -7%;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .equipe-img img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .logo {
+                width: 250px;
+                animation: none;
+            }
+
+            header {
+                font-size: 18px;
+            }
+
+            .container {
+                gap: 25px;
+                padding: 25px 20px 20px 20px;
+            }
+
+            .equipe-img {
+                max-width: 90%;
+                margin-top: -10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>EQUIPE</header>
+
+    <div class="container">
+        <!-- Logo -->
+        <img src="imgs/3.png" alt="Pra Onde Eu Vou?" class="logo">
+
+        <!-- Imagem da Equipe -->
+        <div class="equipe-img">
+            <img src="imgs/equipe.png" alt="Equipe Pra Onde Eu Vou">
+        </div>
+    </div>
+</body>
+
+</html>
