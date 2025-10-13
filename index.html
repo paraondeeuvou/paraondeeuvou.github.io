@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pra Onde Eu Vou?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #d9d9d9;
@@ -25,6 +28,12 @@
             transition: transform 0.2s;
         }
 
+        .frame-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
         /* Só o logo flutua */
         .principal {
             animation: flutuar 2s ease-in-out infinite alternate;
@@ -32,23 +41,23 @@
 
         @keyframes flutuar {
             0% {
-                transform: translate(0, 0) rotate(0deg);
+                transform: translate(-50%, -50%) rotate(0deg);
             }
 
             25% {
-                transform: translate(4px, -5px) rotate(0.8deg);
+                transform: translate(calc(-50% + 4px), calc(-50% - 5px)) rotate(0.8deg);
             }
 
             50% {
-                transform: translate(-3px, 3px) rotate(-0.6deg);
+                transform: translate(calc(-50% - 3px), calc(-50% + 3px)) rotate(-0.6deg);
             }
 
             75% {
-                transform: translate(5px, 2px) rotate(0.5deg);
+                transform: translate(calc(-50% + 5px), calc(-50% + 2px)) rotate(0.5deg);
             }
 
             100% {
-                transform: translate(-4px, -3px) rotate(-0.8deg);
+                transform: translate(calc(-50% - 4px), calc(-50% - 3px)) rotate(-0.8deg);
             }
         }
 
@@ -58,60 +67,71 @@
         }
 
         .principal {
-            top: 30%;
-            left: 33%;
-            right: 36%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
+            width: 450px;
+            z-index: 1;
         }
 
-
-        @media (max-width: 1600px) {
-            .principal {
-                top: 30%;
-                left: 35%;
-                right: 30%;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        @media (max-width: 1366px) {
-            .principal {
-                top: 30%;
-                left: 35%;
-                right: 30%;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-
-
-        /* Posições fixas dos outros quadros — baseadas na imagem */
+        /* Posições fixas dos outros quadros */
         .extras {
-            top: 8%;
-            left: 10%;
-            right: 90%;
-            width: 300px;
+            top: 50px;
+            left: 80px;
+            width: 360px;
         }
 
         .equipe {
-            bottom: 6%;
-            left: 10%;
-            right: 90%;
-            width: 270px;
+            bottom: 80px;
+            left: 120px;
+            width: 320px;
         }
 
         .episodios {
-            bottom: 6%;
-            right: 25%;
-            left: 75%;
-            width: 300px;
+            bottom: 80px;
+            right: 120px;
+            width: 360px;
         }
 
         .blablabla {
-            top: 8%;
-            right: 25%;
-            left: 75%;
-            width: 270px;
+            top: 50px;
+            right: 80px;
+            width: 320px;
+        }
+
+        /* Ícones sociais */
+        .social-icons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .social-icons a {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: #2a2a2a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, background-color 0.2s;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+            background-color: #3a3a3a;
+        }
+
+        .social-icons svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
         }
 
         .frame img {
@@ -119,6 +139,195 @@
             display: block;
         }
 
+        /* Texto dentro dos quadros */
+        .frame-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Amatic SC', cursive;
+            font-size: 42px;
+            font-weight: 700;
+            color: #2a2a2a;
+            text-align: center;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .frame {
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        /* Ajustes para telas grandes */
+        @media (min-width: 1920px) {
+
+            .extras,
+            .episodios {
+                width: 340px;
+            }
+
+            .equipe,
+            .blablabla {
+                width: 340px;
+            }
+        }
+
+        /* Ajustes para telas menores */
+        @media (max-width: 1600px) {
+            .principal {
+                width: 400px;
+            }
+
+            .extras,
+            .episodios {
+                width: 320px;
+            }
+
+            .equipe,
+            .blablabla {
+                width: 280px;
+            }
+
+            .extras {
+                left: 60px;
+            }
+
+            .blablabla {
+                right: 60px;
+            }
+
+            .equipe {
+                left: 100px;
+                bottom: 60px;
+            }
+
+            .episodios {
+                right: 100px;
+                bottom: 60px;
+            }
+        }
+
+        @media (max-width: 1366px) {
+            .principal {
+                width: 350px;
+            }
+
+            .extras,
+            .episodios {
+                width: 260px;
+            }
+
+            .equipe,
+            .blablabla {
+                width: 230px;
+            }
+
+            .extras,
+            .blablabla {
+                top: 40px;
+            }
+
+            .extras {
+                left: 50px;
+            }
+
+            .blablabla {
+                right: 50px;
+            }
+
+            .equipe {
+                left: 80px;
+                bottom: 50px;
+            }
+
+            .episodios {
+                right: 80px;
+                bottom: 50px;
+            }
+        }
+
+        /* Ajustes para telas com pouca altura mas largas (como 1173x566) */
+        @media (max-height: 650px) and (min-width: 1000px) {
+            .principal {
+                width: 320px;
+            }
+
+            .extras,
+            .episodios {
+                width: 240px;
+            }
+
+            .equipe,
+            .blablabla {
+                width: 210px;
+            }
+
+            .extras,
+            .blablabla {
+                top: 25px;
+            }
+
+            .extras {
+                left: 35px;
+            }
+
+            .blablabla {
+                right: 35px;
+            }
+
+            .equipe {
+                left: 60px;
+                bottom: 25px;
+            }
+
+            .episodios {
+                right: 60px;
+                bottom: 25px;
+            }
+        }
+
+        /* Ajustes para telas com pouca altura */
+        @media (max-height: 700px) and (max-width: 999px) {
+            .principal {
+                width: 280px;
+            }
+
+            .extras,
+            .episodios {
+                width: 180px;
+            }
+
+            .equipe,
+            .blablabla {
+                width: 150px;
+            }
+
+            .extras,
+            .blablabla {
+                top: 20px;
+            }
+
+            .extras {
+                left: 30px;
+            }
+
+            .blablabla {
+                right: 30px;
+            }
+
+            .equipe {
+                left: 50px;
+                bottom: 20px;
+            }
+
+            .episodios {
+                right: 50px;
+                bottom: 20px;
+            }
+        }
 
         /* --- MODO MOBILE / TELA ESTREITA --- */
         @media (max-aspect-ratio: 4/3),
@@ -126,7 +335,6 @@
 
             body {
                 overflow-y: auto;
-                /* ativa o scroll no mobile */
             }
 
             .container {
@@ -150,10 +358,21 @@
 
             .principal {
                 order: -1;
-                /* vem primeiro no mobile */
                 width: 90%;
                 max-width: 400px;
                 animation: none;
+                transform: none;
+            }
+
+            .frame-text {
+                font-size: 24px;
+            }
+
+            .social-icons {
+                position: static;
+                flex-direction: row;
+                margin-top: 20px;
+                justify-content: center;
             }
         }
     </style>
@@ -161,11 +380,51 @@
 
 <body>
     <div class="container">
-        <a href="#principal" class="frame principal"><img src="imgs/3.png" alt="Pra Onde Eu Vou?"></a>
-        <a href="#extras" class="frame extras"><img src="imgs/1.png" alt="Extras"></a>
-        <a href="#equipe" class="frame equipe"><img src="imgs/2.png" alt="Equipe"></a>
-        <a href="#episodios" class="frame episodios"><img src="imgs/1.png" alt="Episódios"></a>
-        <a href="#blablabla" class="frame blablabla"><img src="imgs/2.png" alt="Blá Blá Blá"></a>
+        <a href="/index.html" class="frame principal">
+            <div class="frame-wrapper">
+                <img src="imgs/3.png" alt="Pra Onde Eu Vou?">
+            </div>
+        </a>
+        <a href="#extras" class="frame extras">
+            <div class="frame-wrapper">
+                <img src="imgs/1.png" alt="Extras">
+                <span class="frame-text">EXTRAS</span>
+            </div>
+        </a>
+        <a href="/sobre.html" class="frame equipe">
+            <div class="frame-wrapper">
+                <img src="imgs/2.png" alt="Sobre">
+                <span class="frame-text">SOBRE</span>
+            </div>
+        </a>
+        <a href="/episodios.html" class="frame episodios">
+            <div class="frame-wrapper">
+                <img src="imgs/1.png" alt="Episódios">
+                <span class="frame-text">EPISÓDIOS</span>
+            </div>
+        </a>
+        <a href="#blablabla" class="frame blablabla">
+            <div class="frame-wrapper">
+                <img src="imgs/2.png" alt="Blá Blá Blá">
+                <span class="frame-text">SERVIÇO</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- Ícones sociais -->
+    <div class="social-icons">
+        <a href="https://youtube.com/" target="_blank" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
+        </a>
+        <a href="https://www.instagram.com/paraondeeuvou.doc/" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z" />
+            </svg>
+        </a>
     </div>
 </body>
 
