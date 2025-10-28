@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bastidores - Para Onde Eu Vou?</title>
+    <link rel="icon" type="image/x-icon" href="/imgs/3.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background-color: #d9d9d9;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .header {
+            font-family: 'Amatic SC', cursive;
+            font-size: 42px;
+            font-weight: 700;
+            color: #ffffff;
+            background-color: #7c6bdb;
+            text-align: center;
+            padding: 10px 0;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 40px;
+            padding: 30px 20px;
+            width: 100vw;
+            min-height: calc(100vh - 70px);
+            box-sizing: border-box;
+        }
+
+        /* Logo */
+        .logo {
+            width: 350px;
+            max-width: 90%;
+            animation: flutuar 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes flutuar {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Galeria */
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .foto {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .foto:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Vídeos */
+        .foto video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            background-color: #000;
+        }
+
+        /* Modal para ampliar imagens */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            animation: zoom 0.3s ease;
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #7c6bdb;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .logo {
+                width: 220px;
+                animation: none;
+            }
+
+            .container {
+                padding: 20px;
+                gap: 25px;
+            }
+
+            .galeria {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">BASTIDORES</header>
+
+    <div class="container">
+        <!-- Logo -->
+        <a href="index.html"><img src="imgs/3.png" alt="Para Onde Eu Vou?" class="logo"></a>
+
+        <!-- Galeria de fotos -->
+        <div class="galeria" id="galeria">
+            <!-- Basta adicionar novas fotos aqui -->
+            <div class="foto"><img src="bastidores/IMG_0754.png" alt="Bastidores 1"></div>
+            <div class="foto"><img src="bastidores/IMG_0930.png" alt="Bastidores 2"></div>
+            <div class="foto"><img src="bastidores/IMG_0951.png" alt="Bastidores 3"></div>
+            <div class="foto"><img src="bastidores/IMG_1040.png" alt="Bastidores 4"></div>
+            <div class="foto">
+                <video controls muted style="aspect-ratio: 9/16; max-height: 600px;">
+                    <source src="bastidores/IMG_0954.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeo.
+                </video>
+            </div>
+
+            <div class="foto">
+                <video controls muted style="aspect-ratio: 9/16; max-height: 600px;">
+                    <source src="bastidores/IMG_1036.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeo.
+                </video>
+            </div>
+
+            <div class="foto"><img src="bastidores/IMG_001.jpg" alt="Bastidores 7"></div>
+            <div class="foto">
+                <video controls muted style="aspect-ratio: 9/16; max-height: 600px;">
+                    <source src="bastidores/IMG_7721.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeo.
+                </video>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal para ampliar imagens -->
+    <div class="modal" id="modal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <!-- Script para carregar fotos dinamicamente -->
+    <script>
+        // Modal para ampliar imagens
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modalImg');
+        const closeModal = document.getElementById('closeModal');
+        const fotos = document.querySelectorAll('.foto img');
+
+        fotos.forEach(foto => {
+            foto.addEventListener('click', function () {
+                modal.classList.add('active');
+                modalImg.src = this.src;
+            });
+        });
+
+        closeModal.addEventListener('click', function () {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Se quiser deixar totalmente dinâmico, basta listar os nomes das imagens aqui
+        // const imagens = [
+        //     "bastidores/IMG_0754.png",
+        //     "bastidores/IMG_0930.png",
+        //     "bastidores/IMG_0951.png",
+        //     "bastidores/IMG_1040.png",
+        //     "bastidores/IMG_0954.mp4",
+        //     "bastidores/IMG_1036.mp4"
+        //     // adicione novas imagens aqui ↓
+        //     // "imgs/bastidores5.jpg",
+        //     // "imgs/bastidores6.jpg"
+        // ];
+
+        // const galeria = document.getElementById("galeria");
+        // galeria.innerHTML = imagens.map(src =>
+        //     `<div class="foto"><img src="${src}" alt="Bastidores"></div>`
+        // ).join("");
+    </script>
+</body>
+
+</html>
