@@ -49,7 +49,6 @@
             width: 350px;
             max-width: 90%;
             animation: flutuar 2s ease-in-out infinite alternate;
-            animation: fadeIn 1s ease-in;
         }
 
         @keyframes flutuar {
@@ -62,16 +61,66 @@
             }
         }
 
+        /* Container dos botões */
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 90%;
+            max-width: 700px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Botões roxos */
+        .info-button {
+            background-color: #7c6bdb;
+            color: white;
+            border: 3px solid #6b4423;
+            border-radius: 10px;
+            padding: 20px 25px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            text-align: left;
+        }
+
+        .info-button:hover {
+            background-color: #6b5ac7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-button:active {
+            transform: translateY(0);
+        }
+
+        .info-button.active {
+            background-color: #5a49a8;
+        }
+
         /* Box de texto */
         .text-box {
             background-color: #b8b8b8;
             border: 3px solid #6b6b6b;
             border-radius: 10px;
-            padding: 25px 35px;
-            max-width: 700px;
-            width: 90%;
+            padding: 40px 50px;
+            /* AUMENTAR AQUI: primeiro valor = espaço vertical (cima/baixo), segundo = horizontal (lados) */
+            max-width: 1400px;
+            /* AUMENTAR AQUI: largura máxima da caixa */
+            width: 80%;
+            /* AUMENTAR AQUI: porcentagem da largura da tela */
+            min-height: 400px;
+            /* AUMENTAR AQUI: altura mínima da caixa */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
             animation: fadeIn 1s ease-in;
+            display: none;
+        }
+
+        .text-box.show {
+            display: block;
         }
 
         .header {
@@ -79,7 +128,6 @@
             font-size: 42px;
             font-weight: 700;
             color: #ffffff;
-            /* margin: 0; */
             text-align: center;
             animation: fadeIn 1s ease-in;
         }
@@ -89,9 +137,8 @@
             font-size: 42px;
             font-weight: 700;
             color: #2a2a2a;
-            margin: 0;
+            margin: 0 0 15px 0;
             text-align: center;
-            animation: fadeIn 1s ease-in;
         }
 
         .text-box p {
@@ -101,14 +148,6 @@
             color: #2a2a2a;
             margin: 0;
             text-align: justify;
-        }
-
-        /* Imagem da equipe */
-        .equipe-img {
-            width: 100%;
-            max-width: 700px;
-            margin-top: -7%;
-            animation: fadeIn 1s ease-in;
         }
 
         @keyframes fadeIn {
@@ -121,11 +160,6 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        .equipe-img img {
-            width: 100%;
-            display: block;
         }
 
         /* Responsividade */
@@ -144,6 +178,11 @@
                 padding: 25px 20px 20px 20px;
             }
 
+            .info-button {
+                font-size: 18px;
+                padding: 18px 20px;
+            }
+
             .text-box {
                 padding: 20px 25px;
                 width: 85%;
@@ -154,9 +193,8 @@
                 line-height: 1.5;
             }
 
-            .equipe-img {
-                max-width: 90%;
-                margin-top: -10px;
+            .text-h2 {
+                font-size: 36px;
             }
         }
     </style>
@@ -169,14 +207,194 @@
         <!-- Logo -->
         <a href="index.html"><img src="imgs/3.png" alt="Para Onde Eu Vou?" class="logo"></a>
 
-        <!-- Box de Texto -->
-        <!-- <h2 class="text-h2">SOBRE</h2> -->
-        <div class="text-box">
+        <!-- Container dos Botões -->
+        <div class="buttons-container">
+            <button class="info-button" onclick="showContent('dados')">
+                Os dados da adoção: entenda o caminho até os 18 anos
+            </button>
+            <button class="info-button" onclick="showContent('pao')">
+                Eles chegam sem nada. Como o Pão dos Pobres prepara jovens para a vida
+            </button>
+            <button class="info-button" onclick="showContent('republicas')">
+                O papel das repúblicas para jovens que saem dos abrigos na maioridade
+            </button>
+        </div>
+
+        <!-- Box de Texto - Dados da Adoção -->
+        <div class="text-box" id="dados">
+            <!-- <h2 class="text-h2">Os dados da adoção: entenda o caminho até os 18 anos</h2> -->
+            <h2
+                style="font-family: 'Amatic SC', cursive; font-size: 65px; font-weight: 700; color: #2a2a2a; margin-top: 40px; margin-bottom: 15px; text-align: center;">
+                Os dados da adoção: entenda o caminho até os 18 anos</h2>
+            <p style="text-align: center; font-style: italic; margin-bottom: 20px;">Por Alana Borges</p>
             <p>
-                Texto saiba mais
+                Quando uma criança ultrapassa os seis anos em um abrigo, a chance dela encontrar uma família diminui
+                drasticamente. A partir daí, os próximos anos da vida desta criança serão no mesmo lugar, na busca de um
+                novo lar, na expectativa de voltar para casa, ou de simplesmente seguir com a sua vida do jeito que
+                conseguir.
+            </p>
+            <p style="margin-top: 20px;">
+                Os anos passam, e quando essa criança completa 18 anos, o seu processo de adoção é encerrado e esses,
+                agora, jovens, deixam as instituições sem que ninguém saiba, de fato, qual será seu destino. Estima-se
+                que <b>cerca de 3 mil jovens egressos de abrigos atinjam a maioridade anualmente no Brasil sem encontrar
+                    uma família que os acolha</b>, segundo dados de 2020 do Sistema Nacional de Adoção e Acolhimento
+                (SNA).
+            </p>
+            <p style="margin-top: 20px;">
+                No Rio Grande do Sul, a situação é ainda mais preocupante. O estado é o segundo com maior número de
+                crianças e adolescentes acolhidos no país: são 4.016 jovens, sendo 95,5% em instituições. Desses, 654
+                têm mais de 16 anos. Segundo os dados mais recentes do SNA, cerca de <b>277 adolescentes acolhidos no
+                    estado estão prestes a completar 18 anos.</b>
+            </p>
+            <img src="imgs/materia/2.png" alt="Gráfico 2"
+                style="width: 100%; max-width: 800px; margin: 30px auto; display: block;">
+            <p style="margin-top: 20px;">
+                É importante entender que nem todas as crianças em abrigos podem ser adotadas. Muitas mantêm vínculos
+                jurídicos com suas famílias de origem e, segundo o Estatuto da Criança e do Adolescente (ECA), a adoção
+                só pode acontecer se a família for destituída do poder familiar, se os pais forem falecidos ou
+                desconhecidos. O ECA também determina que todos os recursos para manter a criança com sua família de
+                origem devem ser esgotados antes de se pensar em adoção.
+            </p>
+            <p style="margin-top: 20px;">
+                Atualmente, o Rio Grande do Sul tem 575 crianças e adolescentes aptos a serem adotados, sendo o quarto
+                estado com maior número. Desses, apenas 194 estão vinculados a um pretendente. Os outros 381 aguardam
+                sem nenhuma perspectiva concreta de adoção.
+            </p>
+            <p style="margin-top: 20px;">
+                Os números revelam um descompasso entre o perfil desejado pelos pretendentes à adoção e a realidade
+                disponível. O Rio Grande do Sul é o terceiro estado com maior número de pessoas aptas a adotar – 3.170
+                pretendentes, sendo 313 em Porto Alegre. Mas <b>apenas cinco pretendentes no estado inteiro se
+                    habilitaram
+                    para adotar adolescentes maiores de 16 anos.</b> Nenhum deles está na capital.
+            </p>
+            <img src="imgs/materia/3.png" alt="Gráfico 3"
+                style="width: 100%; max-width: 800px; margin: 30px auto; display: block;">
+            <p style="margin-top: 20px;">
+                "Todo mundo está habilitado para adotar crianças de até seis anos de idade. Saiu de seis anos, se torna
+                muito difícil. Não é impossível, mas é difícil. Por isso que, quando passa dessa idade, a gente chama de
+                adoção tardia", explica Cinara Braga, Promotora de Justiça da Infância e Juventude de Porto Alegre. "Até
+                seis anos, tem fila de gente querendo adotar. Depois dessa data, não."
+            </p>
+            <p style="margin-top: 20px;">
+                Paula Simões, defensora pública dirigente do Núcleo de Defesa da Criança e do Adolescente (NUDECA),
+                ajuda a entender por que tantos adolescentes ficam para trás. "Via de regra, as crianças que são
+                encaminhadas para o acolhimento institucional são crianças que se encontram numa situação de extrema
+                vulnerabilidade", explica. Essas crianças vêm de territórios periféricos, de famílias desestruturadas,
+                com histórico de negligência, violências físicas ou até sexuais.
+            </p>
+            <p style="margin-top: 20px;">
+                Quando chegam aos abrigos já carregam múltiplas violações. E é justamente esse perfil que não atrai os
+                pretendentes à adoção. "Geralmente, os casais que se habilitam são aqueles que muitas vezes tentaram
+                gerar uma criança de forma biológica e não conseguiram", diz Paula. Entretanto, esses pretendentes, em
+                sua maioria, não estão preparados para lidar com crianças que precisarão de acompanhamento psicossocial
+                devido aos traumas vividos.
+            </p>
+            <img src="imgs/materia/1.png" alt="Gráfico 1"
+                style="width: 100%; max-width: 800px; margin: 30px auto; display: block;">
+            <p style="margin-top: 20px;">
+                Mas a idade não é o único filtro. Segundo dados do Cadastro Nacional de Adoção (CNA), cor da pele e
+                presença de irmãos também são fatores decisivos: 22% dos pretendentes só aceitavam crianças brancas e
+                69% só queriam adotar uma criança sem irmãos.
+            </p>
+            <p style="margin-top: 20px;">
+                O grande desafio, segundo Cinara Braga, é a lentidão dos processos. "Quando a gente entende que essa
+                criança não vai voltar para a família de origem, a gente ingressa com a ação de destituição do poder
+                familiar. Deveria tramitar em 120 dias, às vezes tramita por anos. E aí a gente chega naquela situação
+                de a criança sair do perfil almejado."
+            </p>
+            <p style="margin-top: 20px;">
+                Quando o processo se arrasta e a criança cresce no abrigo, as chances de adoção desaparecem. Ao
+                completar 18 anos, o processo é encerrado. "A gente não sabe o que acontece com eles. Eu não tenho esse
+                acompanhamento, porque o processo é extinto", diz Cinara. "Às vezes, a gente sabe o que aconteceu com A,
+                B ou C, porque alguém conta, mas a gente não tem a política de acompanhar após os 18 anos."
+            </p>
+            <p style="margin-top: 20px;">
+                A lei permite que maiores de 18 anos também sejam adotados, desde que com assistência do Poder Público e
+                sentença constitutiva, e que o adotando seja pelo menos 16 anos mais novo que o adotante. Mas, na
+                prática, isso raramente acontece.
+            </p>
+            <p style="margin-top: 20px;">
+                "Eu acredito que a Constituição Federal é muito clara quando ela diz que é obrigação da família, da
+                sociedade, do Estado, juntos, exercerem o cuidado da criança e do adolescente", reflete Cinara Braga.
+                "Quando completa 18, não é mais criança e adolescente, é o jovem. Mas, daí, entra o Estatuto da
+                Juventude. Então, até os 29 anos, eles são jovens. Eu penso que nós temos que buscar todas as
+                oportunidades para esse público, porque é um público muito vulnerável."
+            </p>
+            <p style="margin-top: 20px;">
+                Enquanto isso, centenas de adolescentes gaúchos seguem nos abrigos, vendo os dias passarem e as chances
+                de ter uma família diminuírem, até que completem 18 anos e precisem enfrentar sozinhos um mundo para o
+                qual poucos estão preparados.
+            </p>
+            <h3
+                style="font-family: 'Amatic SC', cursive; font-size: 65px; font-weight: 700; color: #2a2a2a; margin-top: 40px; margin-bottom: 15px; text-align: center;">
+                A invisibilidade dos dados</h3>
+            <p style="margin-top: 20px;">
+                Se os números sobre crianças e adolescentes em acolhimento já revelam um cenário preocupante, a situação
+                se torna ainda mais inquietante quando se trata dos jovens que completam 18 anos e deixam os abrigos.
+                Enquanto o Sistema Nacional de Adoção (SNA) e o Cadastro Nacional de Adoção (CNA) mantêm dados
+                atualizados sobre o perfil das crianças acolhidas, dos pretendentes e dos processos de adoção,
+                informações sobre o destino dos egressos são escassas ou praticamente inexistentes.
+            </p>
+            <p style="margin-top: 20px;">
+                Não há um sistema nacional que acompanhe sistematicamente o que acontece com esses jovens após deixarem
+                as instituições. <b>Quantos conseguem se inserir no mercado de trabalho? Quantos dão continuidade aos
+                    estudos? Quantos enfrentam situações de vulnerabilidade ou acabam em situação de rua? São perguntas
+                    sem
+                    respostas oficiais.</b>
+            </p>
+            <p style="margin-top: 20px;">
+                Essa lacuna nos dados reflete a própria lacuna nas políticas públicas de acompanhamento e apoio aos
+                jovens egressos do sistema de acolhimento. Sem informações concretas sobre suas trajetórias, é ainda
+                mais difícil desenvolver programas efetivos que possam auxiliá-los na transição para a vida adulta.
+            </p>
+        </div>
+
+        <!-- Box de Texto - Pão dos Pobres -->
+        <div class="text-box" id="pao">
+            <h2 class="text-h2">Eles chegam sem nada. Como o Pão dos Pobres prepara jovens para a vida</h2>
+            <p>
+                [Conteúdo sobre o Pão dos Pobres será inserido aqui]
+            </p>
+        </div>
+
+        <!-- Box de Texto - Repúblicas -->
+        <div class="text-box" id="republicas">
+            <h2 class="text-h2">O papel das repúblicas para jovens que saem dos abrigos na maioridade</h2>
+            <p>
+                [Conteúdo sobre as repúblicas será inserido aqui]
             </p>
         </div>
     </div>
+
+    <script>
+        function showContent(contentId) {
+            // Esconde todas as caixas de texto
+            const allBoxes = document.querySelectorAll('.text-box');
+            allBoxes.forEach(box => {
+                box.classList.remove('show');
+            });
+
+            // Remove a classe active de todos os botões
+            const allButtons = document.querySelectorAll('.info-button');
+            allButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Mostra a caixa de texto selecionada
+            const selectedBox = document.getElementById(contentId);
+            if (selectedBox) {
+                selectedBox.classList.add('show');
+
+                // Adiciona classe active ao botão clicado
+                event.target.classList.add('active');
+
+                // Scroll suave até o conteúdo
+                setTimeout(() => {
+                    selectedBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        }
+    </script>
 </body>
 
 </html>
